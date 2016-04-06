@@ -1,7 +1,19 @@
 gem 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/complete_me'
+require './lib/complete_me'
+
+require "rake"
+require "rake/testtask"
+
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.test_files = FileList['test/*_test.rb']
+  t.verbose = true
+end
+
+task default: :test # <------ important
+
 
 class CompleteMe < Minitest::Test
 
