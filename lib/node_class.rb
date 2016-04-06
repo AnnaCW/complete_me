@@ -1,20 +1,22 @@
 
 class Node
-  attr_accessor :letter
-  attr_accessor :letter_last
-  attr_accessor :selected_count
-  # attr_accessor :child_nodes
+  attr_accessor :children
+  attr_accessor :end
 
-  def initialize(letter, letter_last=false, selected_count=0)
-    @letter = letter
-    @letter_last
-    # @child_nodes = []
+  def initialize
+    @children = {}
+    @end_node=false
   end
 
-  def selected_count(prefix, word, selected_count=0)
-    @selected_count
-    # need to not only store count in the last node of word(?), but also associate word with prefix
+  def create_node(word,i,node)
+    if i == word.length
+      end_node =true
+    else
+      new_node=Node.new[word[i]]
+      node.children[word[i]] = new_node
+      create_node(new_node,word[i+=1..-1])
+    end
+    node
   end
-
 
 end
