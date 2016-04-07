@@ -26,8 +26,9 @@ class CompleteMe
   end
 
   def insert(word, i=0, node=root)
-    x = word.length - 1
+    x = word.length-1
     if i == x && node.end_node = true
+      return
     elsif node.children.include?(word[i])
       node.children = next_node
       insert(word, i+=1, next_node)
@@ -49,66 +50,15 @@ class CompleteMe
     @count
   end
 
-
-  # def suggest(prefix)
-  #   suggestions = []
-  #   @inserted.each do |word|
-  #     if word.include?(prefix)
-  #       suggestions << word
-  #     else
-  #       match = false
-  #     end
+  # def suggest(word, i=0, node=root)
+  #   x = word.length-1
+  #   until i == x
+  #     children = suggest(word, i+=1, node.children[word[i]])
   #   end
-  # suggestions
-  # end
-  #
-  #
-  # def retrieve(prefix)
-  #   children = @root
-  #   count = 0
-  #   while count < prefix.length
-  #     children = children[prefix[count]].children
-  #     break if !children
-  #     count += 1
+  #     children = node.children[key] until end_node == true
   #   end
-  #   if children
-  #     puts "Word exists"
-  #   else
-  #     puts "Word does not exist"
-  #   end
-  # end
-
-
-
 end
 
-# #   def select(prefix, selected_word)
-# #     take prefix (in already-split form)
-# #     search tree - find last letter
-# #     record count (#of times searched) in the appropriate node.
-# #         # found node - count+=1
-
-# #   # select method - takes a substring and the selected suggestion. You will need to record this selection in your trie and use it to influence future selections to make.
-# #
-#
-#
-
-completion = CompleteMe.new
-  # dictionary = File.read("/usr/share/dict/words")
-  # completion.populate(dictionary)
- completion.insert("pizza")
- completion.insert("why")
- p completion.count
-
-
-
-# completion2 = CompleteMe.new
-# completion2.insert("benz")
-#
- # completion.suggest("piz")
-# # #
-# # completion.count
-# # => 235886
-# #
-# # completion.suggest("piz")
-# => ["pizza", "pizzeria", "pizzicato"]
+# completion = CompleteMe.new
+# completion.insert("pizza")
+# completion.suggest("pi")

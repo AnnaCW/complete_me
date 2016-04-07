@@ -1,18 +1,18 @@
 require "minitest"
-# require "minitest/emoji"
 require "minitest/autorun"
 require "./lib/complete_me"
 require "./test/test_helper"
 
 
 class CompleteMeTest < Minitest::Test
+  attr_reader :comp
 
   def setup
     @comp = CompleteMe.new
   end
 
    def test_root_is_empty_string
-     assert_equal "", comp.root
+     assert_equal "", comp.root.letter
    end
 
    def test_starting_count
@@ -29,5 +29,9 @@ class CompleteMeTest < Minitest::Test
      assert_equal 3, comp.count
    end
 
+  #  def test_can_suggest_from_small_list
+  #    comp.populate("pizza\ndog\ncat")
+  #    assert_equal "pizza", comp.suggest("pi")
+  #  end
 
  end
