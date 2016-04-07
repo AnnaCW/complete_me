@@ -11,8 +11,8 @@ class CompleteMeTest < Minitest::Test
     @comp = CompleteMe.new
   end
 
-   def test_root_is_empty_string
-     assert_equal "", comp.root.letter
+   def test_root_is_empty_hash
+     assert_equal ({}), comp.root
    end
 
    def test_starting_count
@@ -29,9 +29,5 @@ class CompleteMeTest < Minitest::Test
      assert_equal 3, comp.count
    end
 
-  #  def test_can_suggest_from_small_list
-  #    comp.populate("pizza\ndog\ncat")
-  #    assert_equal "pizza", comp.suggest("pi")
-  #  end
 
  end
