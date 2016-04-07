@@ -1,43 +1,33 @@
-gem 'minitest'
-require 'minitest/autorun'
-require 'minitest/pride'
-require './lib/complete_me'
-
-require "rake"
-require "rake/testtask"
-
-Rake::TestTask.new do |t|
-  t.libs << "test"
-  t.test_files = FileList['test/*_test.rb']
-  t.verbose = true
-end
-
-task default: :test # <------ important
+require "minitest"
+# require "minitest/emoji"
+require "minitest/autorun"
+require "./lib/complete_me"
+require "./test/test_helper"
 
 
-class CompleteMe < Minitest::Test
+class CompleteMeTest < Minitest::Test
 
   def setup
-    @completion = CompleteMe.new
+    @comp = CompleteMe.new
   end
 
+   def test_root_is_empty_string
+     assert_equal "", comp.root
+   end
 
-  def test_can_read_dictionary_file
-  end
+   def test_starting_count
+     assert_equal 0, comp.count
+   end
 
-  def test_can_populate_from_dictionary
-  end
+   def test_can_insert_1_word
+     comp.insert("pizza")
+     assert_equal 1, comp.count
+   end
 
-  def test_can_count_words_in_dictionary
-  end
-
-#test can store values associted with keys
-suggest
-#
-# select
-
-# #how to store search history?
-# esp since no end node after prefix?
+   def test_can_populate_from_small_list
+     comp.populate("pizza\ndog\ncat")
+     assert_equal 3, comp.count
+   end
 
 
-end
+ end

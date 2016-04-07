@@ -3,12 +3,11 @@ class Node
   attr_accessor :letter
   attr_accessor :children
   attr_accessor :end_node
-  attr_accessor :parent
 
-  def initialize(letter)
+  def initialize(letter, end_node=false)
     @letter = letter
     @children = {}
-    @end_node=false
+    @end_node = end_node
   end
 
 end
