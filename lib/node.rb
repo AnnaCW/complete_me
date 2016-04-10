@@ -1,10 +1,8 @@
 
 class Node
-  attr_accessor :letter
-  attr_accessor :next
-  attr_accessor :end_node
+  attr_accessor :next, :end_node
 
-  def initialize()
+  def initialize
     @next = {}
     @end_node = false
   end
