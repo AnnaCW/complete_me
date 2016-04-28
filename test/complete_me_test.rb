@@ -11,35 +11,33 @@ class CompleteMeTest < Minitest::Test
     @comp = CompleteMe.new
   end
 
-   def test_root_is_empty_hash
-     assert_equal ({}), comp.root
-   end
-
-   def test_starting_count
+   def test_it_starts_count_at_zero
      assert_equal 0, comp.count
    end
 
-   def test_insert_1_word
-     comp.insert("pizza")
-     assert_equal 1, comp.count
-   end
-
-   def test_populate_from_small_list
+   def test_it_populates_from_small_list
      comp.populate("pizza\ndog\ncat")
      assert_equal 3, comp.count
    end
 
-   def test_can_find_end_of_prefix
+   def test_it_inserts_1_word
      comp.insert("pizza")
-     comp.search("piz")
+     assert_equal 1, comp.count
+   end
+
+   def test_it_finds_end_of_prefix
+     comp.insert("pizza")
      assert_equal "piz", comp.search("piz")
    end
 
-  def test_can_suggest_one_word
+  def test_it_finds_node
     comp.insert("pizza")
-    comp.suggest("piz")
-    assert_equal "pizza", comp.suggest("piz")
+    assert_equal Node, comp.find_node("piz").class
   end
 
+  def test_can_suggest_one_word_using_refactor
+    comp.insert("pizza")
+    assert_equal "pizza", comp.ab_suggest("piz")
+  end
 
- end
+end

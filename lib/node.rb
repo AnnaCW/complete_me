@@ -1,9 +1,9 @@
 
 class Node
-  attr_accessor :next, :end_node
+  attr_accessor :children, :end_node
 
   def initialize
-    @next = {}
+    @children = {}
     @end_node = false
   end
 

@@ -11,8 +11,16 @@ class NodeTest < Minitest::Test
     @node = Node.new
   end
 
-  def test_can_initialize_next_variable
-     assert_equal ({}), node.next
+  def test_it_initializes_node
+     assert node
+  end
+
+  def test_it_creates_children_hash
+     assert_equal Hash, node.children.class
+  end
+
+  def test_it_creates_empty_children_hash
+     assert_equal ({}), node.children
   end
 
   def test_end_node_starts_false
